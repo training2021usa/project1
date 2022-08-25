@@ -7,4 +7,24 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'project1';
+  msg:string='';
+  enteredValue='';
+
+public welcome():void{
+this.msg='hii';
+
+}
+
+public clearMsg():void{
+  this.msg='';
+
+}
+
+public showEnteredData(uname:string):void{
+
+this.enteredValue=uname;
+}
+
+
+
 }
