@@ -6,14 +6,26 @@
     <label for="name">plz enter your name:</label>
     <input #uname type="text" class="form-control" id="name">
   </div>
+
+  <div class="form-group">
+    <label for="password">plz enter your password:</label>
+    <input #pass type="text" class="form-control" id="password">
+  </div>
   
  
   <button type="button" (click)="welcome();"class="btn btn-primary">ShowSomeMessage</button>
   <button type="button" (click)="showEnteredData(uname.value);"class="btn btn-primary"style="margin-left:10px;">ShowEnteredData</button>
   <button type="button" (click)="clearMsg();"class="btn btn-danger"style="margin-left:10px;">clear</button>
+  <button type="button" (click)="authenticate(uname.value,pass.value);"class="btn btn-danger"style="margin-left:10px;">login</button>
+  
 <hr>
   <span style="font-size:18px">coming.....{{msg}}</span>
   <br>
   <span style="font-size:18px">{{msg}}</span>
   <span style="font-size:18px">entered value is...{{enteredValue}}</span>
+
+  <hr>
+
+  <span style="font-size:18px">{{authMessage}}</span>
+
 </main>
