@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,6 +12,8 @@ export class AppComponent {
   msg:string='';
   enteredValue='';
   authMessage='';
+  uname="";
+  pass="";
 
 public welcome():void{
 this.msg='hii';
@@ -21,15 +25,15 @@ public clearMsg():void{
 
 }
 
-public showEnteredData(uname:string):void{
+public showEnteredData():void{
 
-this.enteredValue=uname;
+this.enteredValue=this.uname;
 }
 
-public authenticate(uname:string,password:string):void{
+public authenticate():void{
 
-  if(uname=='sanjay'&& password=='test'){
-   this.authMessage='welecome'+" "+uname;
+  if(this.uname=='sanjay'&& this.pass=='test'){
+   this.authMessage='welecome'+" "+this.uname;
 
   }
   else{
