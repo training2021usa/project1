@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Auth } from './auth.model';
 
 
 
@@ -14,6 +15,13 @@ export class AppComponent {
   authMessage='';
   uname="";
   pass="";
+  showTable:boolean=false;
+  time:Date=new Date();
+  status:string='';
+  showHistoryBtn:String='showHistory';
+ // List<Auth> listOfAuth= new ArrayList();
+
+  listOfAuth:Auth[]=[];
 
 public welcome():void{
 this.msg='hii';
@@ -22,6 +30,9 @@ this.msg='hii';
 
 public clearMsg():void{
   this.msg='';
+ this.enteredValue='';
+ this.uname='';
+ this.pass='';
 
 }
 
@@ -31,16 +42,31 @@ this.enteredValue=this.uname;
 }
 
 public authenticate():void{
-
+  
   if(this.uname=='sanjay'&& this.pass=='test'){
    this.authMessage='welecome'+" "+this.uname;
+   let auth=new Auth(this.uname,this.pass,new Date(),"succes");
+   this.listOfAuth.push(auth);
 
   }
   else{
     this.authMessage="plz try again";
+    let auth=new Auth(this.uname,this.pass,new Date(),"failed");
+   this.listOfAuth.push(auth);
 
   }
+}
+public showHistory():void{
+  if(this.showHistoryBtn=='showHistory'){
+    this.showTable=!this.showTable;
+    this.  showHistoryBtn='HideHistory';
 
+  }
+  else{
+  this.showTable=!this.showTable;
+  this.  showHistoryBtn='showHistory';
+  }
+  
 
 }
 

@@ -17,12 +17,14 @@
   <button type="button" (click)="showEnteredData();"class="btn btn-primary"style="margin-left:10px;">ShowEnteredData</button>
   <button type="button" (click)="clearMsg();"class="btn btn-danger"style="margin-left:10px;">clear</button>
   <button type="button" (click)="authenticate();"class="btn btn-danger"style="margin-left:10px;">login</button>
+  <button type="button" (click)="showHistory();"class="btn btn-danger"style="margin-left:10px;">{{showHistoryBtn}}</button>
  
   
 <hr>
-  <span style="font-size:18px">coming.....{{msg}}</span>
+  <span style="font-size:18px">coming message is .....{{msg}}</span>
   <br>
-  <span style="font-size:18px">{{msg}}</span>
+  <span style="font-size:18px">message is ...{{msg}}</span>
+  <br>
   <span style="font-size:18px">entered value is...{{enteredValue}}</span>
 
   <hr>
@@ -30,7 +32,7 @@
   <span style="font-size:18px">{{authMessage}}</span>
   <hr>
 
-  <div class="container">
+  <div *ngIf="showTable">
     <h2>History..</h2>             
     <table class="table table-bordered">
       <thead>
@@ -38,24 +40,17 @@
           <th>username</th>
           <th>password</th>
           <th>last login</th>
+          <th>status</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>John</td>
-          <td>Doe</td>
-          <td>john@example.com</td>
+        <tr *ngFor="let auth of listOfAuth ">
+          <td>{{auth.uname}}</td>
+          <td>{{auth.pass}}</td>
+          <td>{{auth.time}}</td>
+          <td>{{auth.status}}</td>
         </tr>
-        <tr>
-          <td>Mary</td>
-          <td>Moe</td>
-          <td>mary@example.com</td>
-        </tr>
-        <tr>
-          <td>July</td>
-          <td>Dooley</td>
-          <td>july@example.com</td>
-        </tr>
+       
       </tbody>
     </table>
   </div>
