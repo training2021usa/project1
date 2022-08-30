@@ -41,6 +41,7 @@
           <th>password</th>
           <th>last login</th>
           <th>status</th>
+          <th>ACTION</th>
         </tr>
       </thead>
       <tbody>
@@ -49,6 +50,7 @@
           <td>{{auth.pass}}</td>
           <td>{{auth.time}}</td>
           <td>{{auth.status}}</td>
+          <td> <button type="button"  (click)="deleteAuth(auth);"class="btn btn-primary">Delete</button></td>
         </tr>
        
       </tbody>

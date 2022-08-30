@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Auth } from './auth.model';
+import { AuthService} from './services/auth.service';
 
 
 
@@ -8,7 +9,7 @@ import { Auth } from './auth.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'project1';
   msg:string='';
   enteredValue='';
@@ -21,7 +22,13 @@ export class AppComponent {
   showHistoryBtn:String='showHistory';
  // List<Auth> listOfAuth= new ArrayList();
 
+ //Note..if listOfAuth is modified here it will not be reflected in service layer
   listOfAuth:Auth[]=[];
+
+//constructor injection
+  public constructor(private authService : AuthService){
+
+  }
 
 public welcome():void{
 this.msg='hii';
@@ -70,6 +77,15 @@ public showHistory():void{
 
 }
 
+ngOnInit(): void {
+  this.listOfAuth=this.authService.findAuth();
+}
+
+
+deleteAuth(auth :Auth){
+
+  this.listOfAuth=this.authService.deleteAuth(auth);
+}
 
 
 }
